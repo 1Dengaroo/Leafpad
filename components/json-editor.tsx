@@ -7,6 +7,7 @@ import { useEditorTheme } from '@/lib/theme/editor-theme-provider';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { ClipboardCopyIcon, CheckIcon } from 'lucide-react';
 import type { EditorTheme } from '@/lib/theme/editor-themes';
+import type { InlineSegment } from '@/lib/diff';
 
 export type LineStatus = 'added' | 'removed' | null;
 
@@ -81,6 +82,53 @@ function HighlightedLine({
   );
 }
 
+function InlineHighlightLine({
+  text,
+  segments,
+  status
+}: {
+  text: string;
+  segments: InlineSegment[];
+  status: 'added' | 'removed';
+}) {
+  if (segments.length === 0)
+    return <span style={{ color: 'transparent' }}>{text || '\u00a0'}</span>;
+
+  const darkBg = status === 'added' ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)';
+  const result: React.ReactNode[] = [];
+  let lastEnd = 0;
+
+  for (let i = 0; i < segments.length; i++) {
+    const seg = segments[i];
+    if (seg.start > lastEnd) {
+      result.push(
+        <span key={`t-${lastEnd}`} style={{ color: 'transparent' }}>
+          {text.slice(lastEnd, seg.start)}
+        </span>
+      );
+    }
+    result.push(
+      <span
+        key={`h-${seg.start}`}
+        style={{ color: 'transparent', backgroundColor: darkBg, borderRadius: '2px' }}
+      >
+        {text.slice(seg.start, seg.end)}
+      </span>
+    );
+    lastEnd = seg.end;
+  }
+
+  if (lastEnd < text.length) {
+    result.push(
+      <span key={`t-${lastEnd}`} style={{ color: 'transparent' }}>
+        {text.slice(lastEnd)}
+      </span>
+    );
+  }
+
+  return <>{result}</>;
+}
+
 interface JsonEditorProps {
   value: string;
   onChange?: (value: string) => void;
@@ -88,6 +136,7 @@ interface JsonEditorProps {
   placeholder?: string;
   error?: boolean;
   lineStatuses?: LineStatus[];
+  inlineSegments?: (InlineSegment[] | null)[];
   syntaxHighlight?: boolean;
 }
 
@@ -98,6 +147,7 @@ export function JsonEditor({
   placeholder,
   error,
   lineStatuses,
+  inlineSegments,
   syntaxHighlight
 }: JsonEditorProps) {
   const { editorTheme } = useEditorTheme();
@@ -178,6 +228,7 @@ export function JsonEditor({
       }
       if (overlayRef.current) {
         overlayRef.current.scrollTop = textareaRef.current.scrollTop;
+        overlayRef.current.scrollLeft = textareaRef.current.scrollLeft;
       }
       if (highlightRef.current) {
         highlightRef.current.scrollTop = textareaRef.current.scrollTop;
@@ -238,14 +289,22 @@ export function JsonEditor({
         {lineStatuses && (
           <div
             ref={overlayRef}
-            className="pointer-events-none absolute inset-0 overflow-hidden p-3 font-mono text-sm leading-relaxed"
+            className="pointer-events-none absolute inset-0 overflow-hidden p-3 font-mono text-sm leading-relaxed break-words whitespace-pre-wrap"
             aria-hidden="true"
           >
-            {Array.from({ length: lineCount }, (_, i) => (
-              <div key={i} className={cn('-mx-3 px-3', statusBg(lineStatuses[i] ?? null))}>
-                &nbsp;
-              </div>
-            ))}
+            {(value || ' ').split('\n').map((line, i) => {
+              const status = lineStatuses[i] ?? null;
+              const segments = inlineSegments?.[i];
+              return (
+                <div key={i} className={cn('-mx-3 px-3', statusBg(status))}>
+                  {segments && status ? (
+                    <InlineHighlightLine text={line} segments={segments} status={status} />
+                  ) : (
+                    <span style={{ color: 'transparent' }}>{line || '\u00a0'}</span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         )}
 

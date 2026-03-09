@@ -49,4 +49,46 @@ describe('computeDiff', () => {
     expect(leftStatuses).toEqual([]);
     expect(rightStatuses).toEqual([]);
   });
+
+  it('returns inline segments for paired changed lines', () => {
+    const left = ['hello world'];
+    const right = ['hello earth'];
+    const result = computeDiff(left, right);
+    expect(result.leftStatuses).toEqual(['removed']);
+    expect(result.rightStatuses).toEqual(['added']);
+    // "world" vs "earth" should be highlighted
+    expect(result.leftInline[0]).toBeDefined();
+    expect(result.rightInline[0]).toBeDefined();
+    expect(result.leftInline[0]!.length).toBeGreaterThan(0);
+    expect(result.rightInline[0]!.length).toBeGreaterThan(0);
+  });
+
+  it('returns null inline segments for identical lines', () => {
+    const left = ['same', 'line'];
+    const right = ['same', 'line'];
+    const result = computeDiff(left, right);
+    expect(result.leftInline).toEqual([null, null]);
+    expect(result.rightInline).toEqual([null, null]);
+  });
+
+  it('returns null inline for unpaired lines (more removed than added)', () => {
+    const left = ['a', 'b', 'c'];
+    const right = ['x'];
+    const result = computeDiff(left, right);
+    // Only first pair gets inline segments, rest are null
+    expect(result.leftInline[0]).toBeDefined();
+    expect(result.leftInline[1]).toBeNull();
+    expect(result.leftInline[2]).toBeNull();
+  });
+
+  it('highlights specific word changes', () => {
+    const left = ['the quick brown fox'];
+    const right = ['the slow brown cat'];
+    const result = computeDiff(left, right);
+    // "quick" and "fox" should be highlighted on left, "slow" and "cat" on right
+    const leftSegs = result.leftInline[0]!;
+    const rightSegs = result.rightInline[0]!;
+    expect(leftSegs.length).toBe(2); // "quick" and "fox"
+    expect(rightSegs.length).toBe(2); // "slow" and "cat"
+  });
 });

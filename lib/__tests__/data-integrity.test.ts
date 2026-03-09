@@ -44,13 +44,19 @@ describe('diff presets', () => {
     expect(diffPresets.length).toBeGreaterThan(0);
   });
 
-  it('each preset has left and right content', () => {
+  it('each preset has left and right content and a valid category', () => {
     for (const p of diffPresets) {
       expect(p.id).toBeTruthy();
       expect(p.name).toBeTruthy();
       expect(p.left).toBeTruthy();
       expect(p.right).toBeTruthy();
+      expect(['json', 'text']).toContain(p.category);
     }
+  });
+
+  it('has presets for both json and text categories', () => {
+    expect(diffPresets.some((p) => p.category === 'json')).toBe(true);
+    expect(diffPresets.some((p) => p.category === 'text')).toBe(true);
   });
 
   it('left and right are different in each preset', () => {
