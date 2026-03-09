@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useRef, useSyncExternalStore } from 'react';
+import { useState, useCallback, useRef, useEffect, useSyncExternalStore } from 'react';
 import { Button } from '@/components/ui/button';
 import { JsonEditor } from '@/components/json-editor';
 import { IndentDropdown } from '@/components/indent-dropdown';
@@ -29,6 +29,7 @@ import {
   FileOutputIcon
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { sortKeysDeep } from '@/lib/json-sort';
 
 const STORAGE_KEY = 'leafpad-json-input';
 
@@ -40,22 +41,6 @@ function downloadFile(filename: string, content: string, type: string) {
   a.download = filename;
   a.click();
   URL.revokeObjectURL(url);
-}
-
-function sortKeysDeep(val: unknown): unknown {
-  if (Array.isArray(val)) return val.map(sortKeysDeep);
-  if (val !== null && typeof val === 'object') {
-    return Object.keys(val as Record<string, unknown>)
-      .sort()
-      .reduce(
-        (acc, key) => {
-          acc[key] = sortKeysDeep((val as Record<string, unknown>)[key]);
-          return acc;
-        },
-        {} as Record<string, unknown>
-      );
-  }
-  return val;
 }
 
 export function JsonFormatter() {
@@ -70,7 +55,9 @@ export function JsonFormatter() {
   const [error, setError] = useState('');
   const [indentSize, setIndentSize] = useState(2);
   const outputRef = useRef(output);
-  outputRef.current = output;
+  useEffect(() => {
+    outputRef.current = output;
+  }, [output]);
   const saveTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const [mobileTab, setMobileTab] = useState<'input' | 'output'>('input');
   const loaded = useSyncExternalStore(

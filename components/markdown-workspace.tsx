@@ -16,6 +16,7 @@ import { FileTextIcon, DownloadIcon, PencilLineIcon, EyeIcon } from 'lucide-reac
 import { toast } from 'sonner';
 import { ResizeHandle } from '@/components/resize-handle';
 import { cn } from '@/lib/utils';
+import { computeStats } from '@/lib/stats';
 
 const STORAGE_KEY = 'leafpad-markdown';
 
@@ -56,14 +57,7 @@ export function MarkdownWorkspace() {
     }, 300);
   }, []);
 
-  const stats = useMemo(() => {
-    const text = markdown.trim();
-    const words = text ? text.split(/\s+/).length : 0;
-    const chars = markdown.length;
-    const lines = markdown ? markdown.split('\n').length : 0;
-    const readingTime = Math.max(1, Math.ceil(words / 200));
-    return { words, chars, lines, readingTime };
-  }, [markdown]);
+  const stats = useMemo(() => computeStats(markdown), [markdown]);
 
   const handleExportMd = useCallback(() => {
     downloadFile('document.md', markdown, 'text/markdown');

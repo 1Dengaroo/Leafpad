@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useCallback, useMemo } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 import { useEditorTheme } from '@/lib/theme/editor-theme-provider';
