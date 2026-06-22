@@ -2,11 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import {
@@ -78,25 +81,44 @@ export function ToolSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="gap-1.5 px-2 text-sm font-medium">
-          {active && <span className="text-muted-foreground">{active.icon}</span>}
-          <span>{active?.label ?? 'Select Tool...'}</span>
-          <ChevronDownIcon className="text-muted-foreground size-3.5" />
+        <Button
+          variant="ghost"
+          size="sm"
+          className="group data-[state=open]:bg-accent gap-1.5 px-2 font-medium"
+        >
+          {active && (
+            <span className="text-muted-foreground group-data-[state=open]:text-foreground">
+              {active.icon}
+            </span>
+          )}
+          <span>{active?.label ?? 'Select tool'}</span>
+          <ChevronDownIcon className="text-muted-foreground size-3.5 transition-transform duration-150 group-data-[state=open]:rotate-180" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-56">
-        {tools.map((t) => (
-          <DropdownMenuItem key={t.id} asChild>
-            <Link href={t.href} className="gap-3 py-2">
-              <span className="text-muted-foreground">{t.icon}</span>
-              <div className="flex-1">
-                <div className="text-sm font-medium">{t.label}</div>
-                <div className="text-muted-foreground text-xs">{t.description}</div>
-              </div>
-              {t.id === activeTool && <CheckIcon className="text-primary size-3.5" />}
-            </Link>
-          </DropdownMenuItem>
-        ))}
+      <DropdownMenuContent align="start" sideOffset={6} className="w-64 p-1.5">
+        <DropdownMenuLabel className="text-muted-foreground py-1 text-xs tracking-wide uppercase">
+          Tools
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        {tools.map((t) => {
+          const isActive = t.id === activeTool;
+          return (
+            <DropdownMenuItem key={t.id} asChild>
+              <Link href={t.href} className={cn('gap-3 py-2', isActive && 'bg-accent/60')}>
+                <span className={cn('text-muted-foreground', isActive && 'text-foreground')}>
+                  {t.icon}
+                </span>
+                <div className="flex-1">
+                  <div className={cn('text-sm', isActive ? 'font-semibold' : 'font-medium')}>
+                    {t.label}
+                  </div>
+                  <div className="text-muted-foreground text-xs">{t.description}</div>
+                </div>
+                {isActive && <CheckIcon className="text-primary size-3.5" />}
+              </Link>
+            </DropdownMenuItem>
+          );
+        })}
       </DropdownMenuContent>
     </DropdownMenu>
   );
