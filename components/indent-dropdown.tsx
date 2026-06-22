@@ -21,7 +21,7 @@ export function IndentDropdown({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-1.5">
+        <Button variant="outline" size="sm">
           <IndentIncreaseIcon className="size-3.5" />
           {indentSize}
           <span className="hidden sm:inline"> spaces</span>

@@ -12,13 +12,14 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
+import { MobileTabSwitcher } from '@/components/mobile-tab-switcher';
 import { FileTextIcon, DownloadIcon, PencilLineIcon, EyeIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import { ResizeHandle } from '@/components/resize-handle';
 import { cn } from '@/lib/utils';
 import { computeStats } from '@/lib/stats';
 
-const STORAGE_KEY = 'leafpad-markdown';
+const STORAGE_KEY = 'toolbench-markdown';
 
 function downloadFile(filename: string, content: string, type: string) {
   const blob = new Blob([content], { type });
@@ -89,7 +90,7 @@ export function MarkdownWorkspace() {
         <div className="flex items-center gap-1 pr-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="gap-1.5 text-xs">
+              <Button variant="ghost" size="sm" className="text-xs">
                 <DownloadIcon className="size-3.5" />
                 <span className="hidden sm:inline">Export</span>
               </Button>
@@ -102,7 +103,7 @@ export function MarkdownWorkspace() {
           </DropdownMenu>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="gap-1.5 text-xs">
+              <Button variant="ghost" size="sm" className="text-xs">
                 <FileTextIcon className="size-3.5" />
                 <span className="hidden sm:inline">Examples</span>
               </Button>
@@ -119,32 +120,14 @@ export function MarkdownWorkspace() {
       </div>
 
       {/* Mobile tab bar */}
-      <div className="flex border-b md:hidden">
-        <button
-          onClick={() => setMobileTab('editor')}
-          className={cn(
-            'flex flex-1 items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors',
-            mobileTab === 'editor'
-              ? 'border-primary text-foreground border-b-2'
-              : 'text-muted-foreground'
-          )}
-        >
-          <PencilLineIcon className="size-3.5" />
-          Editor
-        </button>
-        <button
-          onClick={() => setMobileTab('preview')}
-          className={cn(
-            'flex flex-1 items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors',
-            mobileTab === 'preview'
-              ? 'border-primary text-foreground border-b-2'
-              : 'text-muted-foreground'
-          )}
-        >
-          <EyeIcon className="size-3.5" />
-          Preview
-        </button>
-      </div>
+      <MobileTabSwitcher
+        tabs={[
+          { value: 'editor', label: 'Editor', icon: <PencilLineIcon className="size-3.5" /> },
+          { value: 'preview', label: 'Preview', icon: <EyeIcon className="size-3.5" /> }
+        ]}
+        value={mobileTab}
+        onChange={setMobileTab}
+      />
 
       {/* Split pane (desktop) / Tabbed view (mobile) */}
       <div ref={containerRef} className="flex min-h-0 flex-1 flex-col md:flex-row">

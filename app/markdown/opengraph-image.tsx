@@ -1,6 +1,6 @@
 import { generateOgImage, ogSize, ogContentType } from '@/lib/og-image';
 
-export const alt = 'Markdown Editor with Live Preview - Leafpad';
+export const alt = 'Markdown Editor with Live Preview - Toolbench';
 export const size = ogSize;
 export const contentType = ogContentType;
 

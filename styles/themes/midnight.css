@@ -1,0 +1,73 @@
+/* ============================================================
+   Theme: Midnight
+   Mood:  Deep navy blue-black with a clear azure accent — IDE-like, technical
+   ============================================================ */
+
+[data-theme='midnight'] {
+  color-scheme: dark;
+
+  /* ── Semantic tokens (oklch L C H) ── */
+
+  --accent-primary: 0.68 0.14 232;
+  --accent-secondary: 0.62 0.1 220;
+
+  --surface-primary: 0.14 0.025 250;
+  --surface-secondary: 0.18 0.028 250;
+  --surface-elevated: 0.21 0.03 250;
+  --surface-overlay: 0.08 0.02 250;
+
+  --border-default: 0.28 0.03 250;
+  --border-subtle: 0.22 0.025 250;
+  --border-strong: 0.38 0.035 250;
+
+  --text-primary: 0.9 0.02 240;
+  --text-secondary: 0.72 0.02 240;
+  --text-muted: 0.56 0.02 240;
+  --text-inverse: 0.14 0.025 250;
+
+  /* ── Elevation ── */
+
+  --elevation-sm: 0 1px 3px oklch(0.04 0.03 250 / 0.4), 0 1px 2px oklch(0.04 0.03 250 / 0.25);
+  --elevation-md: 0 6px 16px oklch(0.04 0.03 250 / 0.45), 0 2px 6px oklch(0.04 0.03 250 / 0.25);
+  --elevation-lg: 0 12px 32px oklch(0.04 0.03 250 / 0.5), 0 4px 10px oklch(0.04 0.03 250 / 0.3);
+
+  /* ── Shape ── */
+
+  --radius: 0.625rem;
+  --card-border-width: 1px;
+
+  /* ── shadcn bridge tokens (HSL) ── */
+
+  --background: 220 40% 7%;
+  --foreground: 210 28% 88%;
+  --card: 220 36% 10%;
+  --card-foreground: 210 28% 88%;
+  --popover: 220 40% 6%;
+  --popover-foreground: 210 28% 88%;
+  --primary: 200 88% 57%;
+  --primary-foreground: 220 40% 7%;
+  --secondary: 218 28% 17%;
+  --secondary-foreground: 210 24% 82%;
+  --muted: 218 28% 14%;
+  --muted-foreground: 212 18% 58%;
+  --accent: 218 30% 16%;
+  --accent-foreground: 210 28% 88%;
+  --destructive: 0 72% 57%;
+  --destructive-foreground: 220 40% 8%;
+  --border: 217 26% 20%;
+  --input: 217 26% 20%;
+  --ring: 200 88% 57%;
+  --chart-1: 200 84% 58%;
+  --chart-2: 222 70% 64%;
+  --chart-3: 180 60% 50%;
+  --chart-4: 250 60% 68%;
+  --chart-5: 160 54% 50%;
+  --sidebar-background: 221 42% 5%;
+  --sidebar-foreground: 212 18% 56%;
+  --sidebar-primary: 200 88% 55%;
+  --sidebar-primary-foreground: 220 40% 7%;
+  --sidebar-accent: 218 30% 12%;
+  --sidebar-accent-foreground: 210 28% 88%;
+  --sidebar-border: 217 26% 16%;
+  --sidebar-ring: 200 88% 55%;
+}

@@ -1,0 +1,73 @@
+/* ============================================================
+   Theme: Sandstone
+   Mood:  Warm ivory and espresso with deep muted teal — calm, editorial
+   ============================================================ */
+
+[data-theme='sandstone'] {
+  color-scheme: light;
+
+  /* ── Semantic tokens (oklch L C H) ── */
+
+  --accent-primary: 0.46 0.07 178;
+  --accent-secondary: 0.5 0.06 150;
+
+  --surface-primary: 0.98 0.008 80;
+  --surface-secondary: 0.96 0.01 80;
+  --surface-elevated: 0.99 0.006 80;
+  --surface-overlay: 0.2 0.015 70;
+
+  --border-default: 0.9 0.01 80;
+  --border-subtle: 0.94 0.006 80;
+  --border-strong: 0.83 0.016 80;
+
+  --text-primary: 0.24 0.015 70;
+  --text-secondary: 0.44 0.012 70;
+  --text-muted: 0.56 0.01 70;
+  --text-inverse: 0.98 0.008 80;
+
+  /* ── Elevation ── */
+
+  --elevation-sm: 0 1px 2px oklch(0.3 0.02 70 / 0.08), 0 1px 1px oklch(0.3 0.02 70 / 0.05);
+  --elevation-md: 0 6px 16px oklch(0.3 0.02 70 / 0.1), 0 2px 6px oklch(0.3 0.02 70 / 0.06);
+  --elevation-lg: 0 14px 32px oklch(0.3 0.02 70 / 0.13), 0 6px 12px oklch(0.3 0.02 70 / 0.07);
+
+  /* ── Shape ── */
+
+  --radius: 0.625rem;
+  --card-border-width: 1px;
+
+  /* ── shadcn bridge tokens (HSL) ── */
+
+  --background: 40 30% 97%;
+  --foreground: 30 14% 15%;
+  --card: 40 33% 99%;
+  --card-foreground: 30 14% 15%;
+  --popover: 40 33% 99%;
+  --popover-foreground: 30 14% 15%;
+  --primary: 178 44% 31%;
+  --primary-foreground: 40 30% 98%;
+  --secondary: 40 16% 91%;
+  --secondary-foreground: 30 14% 22%;
+  --muted: 40 16% 93%;
+  --muted-foreground: 35 9% 44%;
+  --accent: 40 16% 92%;
+  --accent-foreground: 30 14% 15%;
+  --destructive: 8 60% 47%;
+  --destructive-foreground: 40 30% 98%;
+  --border: 38 16% 88%;
+  --input: 38 16% 85%;
+  --ring: 178 44% 31%;
+  --chart-1: 178 42% 33%;
+  --chart-2: 150 36% 38%;
+  --chart-3: 32 48% 46%;
+  --chart-4: 196 40% 38%;
+  --chart-5: 120 28% 40%;
+  --sidebar-background: 40 26% 96%;
+  --sidebar-foreground: 35 9% 42%;
+  --sidebar-primary: 178 44% 29%;
+  --sidebar-primary-foreground: 40 30% 98%;
+  --sidebar-accent: 40 16% 92%;
+  --sidebar-accent-foreground: 30 14% 15%;
+  --sidebar-border: 38 16% 86%;
+  --sidebar-ring: 178 44% 29%;
+}

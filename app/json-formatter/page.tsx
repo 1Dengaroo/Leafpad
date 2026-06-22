@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     'json sort keys'
   ],
   openGraph: {
-    title: 'Free JSON Formatter, Beautifier & Minifier | Leafpad',
+    title: 'Free JSON Formatter, Beautifier & Minifier | Toolbench',
     description:
       'Format, beautify, minify, and sort JSON online. Configurable indentation and instant validation. Free and ad-free.',
-    url: 'https://leafpad.vercel.app/json-formatter'
+    url: 'https://toolbench.vercel.app/json-formatter'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free JSON Formatter, Beautifier & Minifier | Leafpad',
+    title: 'Free JSON Formatter, Beautifier & Minifier | Toolbench',
     description: 'Format, beautify, minify, and sort JSON online. Free and ad-free.'
   },
   alternates: {

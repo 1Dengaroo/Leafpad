@@ -11,7 +11,7 @@ interface FontContextValue {
 const FontContext = createContext<FontContextValue | null>(null);
 
 const STORAGE_KEY = 'app-font';
-const DEFAULT_FONT_ID = 'sora';
+const DEFAULT_FONT_ID = 'switzer';
 
 export function FontProvider({ children }: { children: React.ReactNode }) {
   const [fontId, setFontId] = useState(() => {

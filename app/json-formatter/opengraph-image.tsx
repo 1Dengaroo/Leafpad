@@ -1,6 +1,6 @@
 import { generateOgImage, ogSize, ogContentType } from '@/lib/og-image';
 
-export const alt = 'JSON Formatter & Minifier - Leafpad';
+export const alt = 'JSON Formatter & Minifier - Toolbench';
 export const size = ogSize;
 export const contentType = ogContentType;
 

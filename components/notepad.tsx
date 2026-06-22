@@ -53,7 +53,7 @@ function formatTime(ts: number): string {
   return new Date(ts).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 }
 
-const COLUMNS_KEY = 'leafpad:notepad:columns';
+const COLUMNS_KEY = 'toolbench:notepad:columns';
 
 type ColumnCount = 1 | 2 | 3 | 4;
 
@@ -179,20 +179,23 @@ function NoteCard({
         )}
 
         {!isSelecting && (
-          <button
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon-sm"
             onClick={(e) => {
               e.stopPropagation();
               onDelete();
             }}
             className={cn(
-              'absolute top-3 right-3 z-10 flex size-7 items-center justify-center rounded-md transition-all',
+              'absolute top-3 right-3 z-10 size-7 rounded-md',
               'text-muted-foreground hover:text-destructive hover:bg-destructive/10',
               'sm:opacity-0 sm:group-hover:opacity-100'
             )}
             aria-label="Delete note"
           >
             <Trash2Icon className="size-3.5" />
-          </button>
+          </Button>
         )}
 
         <div className="flex flex-col gap-2 pr-6">
@@ -303,14 +306,13 @@ export function Notepad() {
       <div className="flex flex-wrap items-center gap-2 border-b px-3 py-2 sm:px-4">
         {selecting ? (
           <>
-            <Button size="sm" variant="outline" className="gap-1.5" onClick={exitSelecting}>
+            <Button size="sm" variant="outline" onClick={exitSelecting}>
               <XIcon className="size-3.5" />
               Done
             </Button>
             <Button
               size="sm"
               variant="outline"
-              className="gap-1.5"
               onClick={() => {
                 if (selected.size === notes.length) {
                   setSelected(new Set());
@@ -327,7 +329,6 @@ export function Notepad() {
             <Button
               size="sm"
               variant="destructive"
-              className="gap-1.5"
               disabled={selected.size === 0}
               onClick={() => setDeleteSelectedDialogOpen(true)}
             >
@@ -340,7 +341,7 @@ export function Notepad() {
           </>
         ) : (
           <>
-            <Button size="sm" onClick={handleNewNote} className="gap-1.5">
+            <Button size="sm" onClick={handleNewNote}>
               <PlusIcon className="size-3.5" />
               New note
             </Button>
@@ -348,7 +349,7 @@ export function Notepad() {
             {/* Layout dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button size="sm" variant="outline" className="gap-1.5">
+                <Button size="sm" variant="outline">
                   <LayoutGridIcon className="size-3.5" />
                   <span className="hidden sm:inline">Layout</span>
                 </Button>
@@ -367,7 +368,7 @@ export function Notepad() {
             {/* More menu */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button size="sm" variant="outline" className="gap-1.5">
+                <Button size="sm" variant="outline">
                   <EllipsisVerticalIcon className="size-3.5" />
                   <span className="hidden sm:inline">More</span>
                 </Button>
@@ -413,7 +414,7 @@ export function Notepad() {
                 Create your first note to start jotting things down.
               </p>
             </div>
-            <Button size="sm" onClick={handleNewNote} className="gap-1.5">
+            <Button size="sm" onClick={handleNewNote}>
               <PlusIcon className="size-3.5" />
               New note
             </Button>
@@ -456,17 +457,14 @@ export function Notepad() {
 
       {/* FAB — mobile only */}
       {!selecting && (
-        <button
+        <Button
           onClick={handleNewNote}
-          className={cn(
-            'fixed right-6 bottom-6 z-10 flex size-14 items-center justify-center rounded-full shadow-lg transition-all sm:hidden',
-            'bg-primary text-primary-foreground',
-            'hover:shadow-xl active:scale-95'
-          )}
+          size="icon"
+          className="fixed right-6 bottom-6 z-10 size-14 shadow-lg transition-all hover:shadow-xl active:scale-95 sm:hidden"
           aria-label="New note"
         >
           <PlusIcon className="size-6" />
-        </button>
+        </Button>
       )}
 
       {/* Alert: delete single note */}

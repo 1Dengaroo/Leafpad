@@ -1,6 +1,14 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
 import {
   Dialog,
   DialogContent,
@@ -10,6 +18,7 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog';
 import { SettingsIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
 import { useFont } from '@/lib/theme/font-provider';
 import { useEditorTheme } from '@/lib/theme/editor-theme-provider';
@@ -53,14 +62,15 @@ export function SettingsDialog() {
             <h3 className="mb-3 text-sm font-medium">Theme</h3>
             <div className="grid grid-cols-3 gap-2">
               {themes.map((t) => (
-                <button
+                <Button
                   key={t.id}
+                  type="button"
+                  variant="outline"
                   onClick={() => setTheme(t.id)}
-                  className={`hover:bg-accent/50 flex flex-col items-center gap-1.5 rounded-lg border p-3 text-xs transition-colors ${
-                    mounted && t.id === currentTheme.id
-                      ? 'border-primary ring-primary ring-1'
-                      : 'border-border'
-                  }`}
+                  className={cn(
+                    'h-auto flex-col gap-1.5 rounded-lg p-3 text-xs',
+                    mounted && t.id === currentTheme.id && 'border-primary ring-primary ring-1'
+                  )}
                 >
                   <div className="flex gap-1">
                     <span
@@ -77,7 +87,7 @@ export function SettingsDialog() {
                     />
                   </div>
                   <span>{t.name}</span>
-                </button>
+                </Button>
               ))}
             </div>
           </section>
@@ -87,12 +97,15 @@ export function SettingsDialog() {
             <h3 className="mb-3 text-sm font-medium">Editor Color</h3>
             <div className="grid grid-cols-3 gap-2">
               {editorThemes.map((t) => (
-                <button
+                <Button
                   key={t.id}
+                  type="button"
+                  variant="outline"
                   onClick={() => setEditorTheme(t.id)}
-                  className={`hover:bg-accent/50 flex flex-col items-center gap-1.5 rounded-lg border p-3 text-xs transition-colors ${
-                    t.id === editorThemeId ? 'border-primary ring-primary ring-1' : 'border-border'
-                  }`}
+                  className={cn(
+                    'h-auto flex-col gap-1.5 rounded-lg p-3 text-xs',
+                    t.id === editorThemeId && 'border-primary ring-primary ring-1'
+                  )}
                 >
                   <div className="flex gap-1">
                     <span
@@ -105,7 +118,7 @@ export function SettingsDialog() {
                     />
                   </div>
                   <span>{t.name}</span>
-                </button>
+                </Button>
               ))}
             </div>
           </section>
@@ -114,18 +127,11 @@ export function SettingsDialog() {
           <section>
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-medium">Syntax Highlighting</h3>
-              <button
-                onClick={() => setSyntaxHighlight(!syntaxHighlight)}
-                className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${
-                  syntaxHighlight ? 'bg-primary' : 'bg-muted'
-                }`}
-              >
-                <span
-                  className={`inline-block size-3.5 rounded-full bg-white transition-transform ${
-                    syntaxHighlight ? 'translate-x-[18px]' : 'translate-x-[3px]'
-                  }`}
-                />
-              </button>
+              <Switch
+                checked={syntaxHighlight}
+                onCheckedChange={setSyntaxHighlight}
+                aria-label="Toggle syntax highlighting"
+              />
             </div>
             <p className="text-muted-foreground mt-1 text-xs">Color JSON tokens in the editor</p>
           </section>
@@ -133,18 +139,18 @@ export function SettingsDialog() {
           {/* Font */}
           <section>
             <h3 className="mb-3 text-sm font-medium">Font</h3>
-            <select
-              value={currentFont.id}
-              onChange={(e) => setFont(e.target.value)}
-              className="border-input placeholder:text-muted-foreground/60 focus-visible:border-ring focus-visible:ring-ring/20 flex h-9 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-xs transition-colors outline-none focus-visible:ring-[3px]"
-              style={{ fontFamily: `var(${currentFont.variable})` }}
-            >
-              {fonts.map((f) => (
-                <option key={f.id} value={f.id}>
-                  {f.name}
-                </option>
-              ))}
-            </select>
+            <Select value={currentFont.id} onValueChange={setFont}>
+              <SelectTrigger style={{ fontFamily: `var(${currentFont.variable})` }}>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {fonts.map((f) => (
+                  <SelectItem key={f.id} value={f.id} style={{ fontFamily: `var(${f.variable})` }}>
+                    {f.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </section>
         </div>
       </DialogContent>

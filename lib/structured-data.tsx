@@ -7,8 +7,8 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
 export const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: 'Leafpad',
-  url: 'https://leafpad.vercel.app',
+  name: 'Toolbench',
+  url: 'https://toolbench.vercel.app',
   description:
     'Free developer tools: JSON formatter, markdown editor, diff tool, notepad, and utilities. No ads, no sign-ups.',
   applicationCategory: 'DeveloperApplication',

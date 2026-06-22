@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Sora, Space_Grotesk, Literata, Plus_Jakarta_Sans, Newsreader } from 'next/font/google';
+import localFont from 'next/font/local';
 import '@/styles/globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from 'sonner';
@@ -14,8 +15,20 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space
 const literata = Literata({ subsets: ['latin'], variable: '--font-literata' });
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-plus-jakarta' });
 const newsreader = Newsreader({ subsets: ['latin'], variable: '--font-newsreader' });
+// Switzer — clean geometric sans (Fontshare, free). Default UI font.
+const switzer = localFont({
+  src: [
+    { path: './fonts/Switzer-Medium.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/Switzer-Semibold.woff2', weight: '600', style: 'normal' },
+    { path: './fonts/Switzer-Bold.woff2', weight: '700', style: 'normal' },
+    { path: './fonts/Switzer-Extrabold.woff2', weight: '800', style: 'normal' }
+  ],
+  variable: '--font-switzer',
+  display: 'swap'
+});
 
 const fontVariables = [
+  switzer.variable,
   sora.variable,
   spaceGrotesk.variable,
   literata.variable,
@@ -25,8 +38,8 @@ const fontVariables = [
 
 export const metadata: Metadata = {
   title: {
-    default: 'Leafpad | Free Developer Tools',
-    template: '%s | Leafpad'
+    default: 'Toolbench | Free Developer Tools',
+    template: '%s | Toolbench'
   },
   description:
     'Free, ad-free developer tools. JSON formatter, markdown editor, diff tool, notepad, and utilities like UUID generator, Base64 encoder, and SHA-256 hashing. No sign-ups, no tracking.',
@@ -57,18 +70,18 @@ export const metadata: Metadata = {
     'online developer tools'
   ],
   icons: { icon: '/logo.svg' },
-  metadataBase: new URL('https://leafpad.vercel.app'),
+  metadataBase: new URL('https://toolbench.vercel.app'),
   openGraph: {
-    title: 'Leafpad | Free Developer Tools',
+    title: 'Toolbench | Free Developer Tools',
     description:
       'Free developer tools: JSON formatter, markdown editor, diff tool, notepad, and utilities. No ads, no sign-ups.',
-    url: 'https://leafpad.vercel.app',
+    url: 'https://toolbench.vercel.app',
     type: 'website',
-    siteName: 'Leafpad'
+    siteName: 'Toolbench'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Leafpad | Free Developer Tools',
+    title: 'Toolbench | Free Developer Tools',
     description:
       'Free developer tools: JSON formatter, markdown editor, diff tool, notepad, and utilities. No ads, no sign-ups.'
   }
@@ -84,7 +97,10 @@ export default function RootLayout({
       <head>
         <JsonLd data={websiteSchema} />
       </head>
-      <body className={`${fontVariables} antialiased`} style={{ fontFamily: 'var(--font-sora)' }}>
+      <body
+        className={`${fontVariables} antialiased`}
+        style={{ fontFamily: 'var(--font-switzer)' }}
+      >
         <ThemeProvider>
           <FontProvider>
             <EditorThemeProvider>

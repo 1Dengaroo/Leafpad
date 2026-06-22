@@ -3,6 +3,7 @@
 import { type RefObject } from 'react';
 import type { CodeEditorHandle } from '@/components/code-editor';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
+import { Button } from '@/components/ui/button';
 import {
   Heading1Icon,
   Heading2Icon,
@@ -94,9 +95,11 @@ export function MarkdownToolbar({ editorRef }: { editorRef: RefObject<CodeEditor
           {group.map((item) => (
             <Tooltip key={item.label}>
               <TooltipTrigger asChild>
-                <button
+                <Button
                   type="button"
-                  className="text-muted-foreground hover:text-foreground hover:bg-accent rounded-md p-1.5 transition-colors"
+                  variant="ghost-muted"
+                  size="icon-sm"
+                  className="rounded-md"
                   onClick={() => {
                     if (editorRef.current) {
                       item.action(editorRef.current);
@@ -105,7 +108,7 @@ export function MarkdownToolbar({ editorRef }: { editorRef: RefObject<CodeEditor
                   aria-label={item.label}
                 >
                   <item.icon className="size-4" />
-                </button>
+                </Button>
               </TooltipTrigger>
               <TooltipContent side="bottom" className="text-xs">
                 {item.label}

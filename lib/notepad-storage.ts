@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'leafpad:notepad:notes';
+const STORAGE_KEY = 'toolbench:notepad:notes';
 
 export interface Note {
   id: string;

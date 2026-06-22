@@ -1,8 +1,8 @@
-# Leafpad
+# Toolbench
 
 A clean, ad-free set of developer tools: markdown editor, JSON formatter, and JSON diff.
 
-**Live at [leafpad.vercel.app](https://leafpad.vercel.app)**
+**Live at [toolbench.vercel.app](https://toolbench.vercel.app)**
 
 ## Tools
 

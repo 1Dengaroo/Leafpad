@@ -19,14 +19,14 @@ export const metadata: Metadata = {
     'online uuid generator'
   ],
   openGraph: {
-    title: 'Free Developer Utilities - UUID, NanoID, Base64 & Hash | Leafpad',
+    title: 'Free Developer Utilities - UUID, NanoID, Base64 & Hash | Toolbench',
     description:
       'Generate UUIDs, NanoIDs, encode/decode Base64, and hash with SHA-256/512. Free and ad-free.',
-    url: 'https://leafpad.vercel.app/utilities'
+    url: 'https://toolbench.vercel.app/utilities'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Developer Utilities - UUID, NanoID, Base64 & Hash | Leafpad',
+    title: 'Free Developer Utilities - UUID, NanoID, Base64 & Hash | Toolbench',
     description:
       'Generate UUIDs, NanoIDs, encode/decode Base64, and hash with SHA-256/512. Free and ad-free.'
   },

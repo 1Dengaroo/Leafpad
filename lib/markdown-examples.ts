@@ -8,7 +8,7 @@ export const markdownExamples: MarkdownExample[] = [
   {
     id: 'getting-started',
     name: 'Getting Started',
-    content: `# Welcome to Leafpad
+    content: `# Welcome to Toolbench
 
 Start writing markdown here and see it rendered in **real time** on the right.
 

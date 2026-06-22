@@ -16,14 +16,14 @@ export const metadata: Metadata = {
     'github flavored markdown'
   ],
   openGraph: {
-    title: 'Free Markdown Editor with Live Preview | Leafpad',
+    title: 'Free Markdown Editor with Live Preview | Toolbench',
     description:
       'Write and preview markdown in real time. GFM support, formatting toolbar, syntax highlighting, and export. Free and ad-free.',
-    url: 'https://leafpad.vercel.app/markdown'
+    url: 'https://toolbench.vercel.app/markdown'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Markdown Editor with Live Preview | Leafpad',
+    title: 'Free Markdown Editor with Live Preview | Toolbench',
     description:
       'Write and preview markdown in real time. GFM support, formatting toolbar, and export. Free and ad-free.'
   },

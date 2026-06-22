@@ -3,6 +3,7 @@
 import { useState, useCallback, useMemo } from 'react';
 
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -82,18 +83,20 @@ function CopyButton({ value, compact }: { value: string; compact?: boolean }) {
     return (
       <Tooltip>
         <TooltipTrigger asChild>
-          <button
+          <Button
             type="button"
+            variant="ghost-muted"
+            size="icon-xs"
             onClick={handleCopy}
             disabled={!value}
-            className="text-muted-foreground hover:text-foreground shrink-0 p-1 transition-colors disabled:opacity-30"
+            className="shrink-0"
           >
             {copied ? (
               <CheckIcon className="size-3.5" />
             ) : (
               <ClipboardCopyIcon className="size-3.5" />
             )}
-          </button>
+          </Button>
         </TooltipTrigger>
         <TooltipContent side="top">{copied ? 'Copied!' : 'Copy'}</TooltipContent>
       </Tooltip>
@@ -103,14 +106,16 @@ function CopyButton({ value, compact }: { value: string; compact?: boolean }) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <button
+        <Button
           type="button"
+          variant="ghost-muted"
+          size="icon-sm"
           onClick={handleCopy}
           disabled={!value}
-          className="text-muted-foreground hover:text-foreground shrink-0 rounded-md p-1.5 transition-colors disabled:opacity-30"
+          className="shrink-0"
         >
           {copied ? <CheckIcon className="size-4" /> : <ClipboardCopyIcon className="size-4" />}
-        </button>
+        </Button>
       </TooltipTrigger>
       <TooltipContent side="top">{copied ? 'Copied!' : 'Copy'}</TooltipContent>
     </Tooltip>
@@ -121,12 +126,9 @@ function InfoTooltip({ text }: { text: string }) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <button
-          type="button"
-          className="text-muted-foreground hover:text-foreground transition-colors"
-        >
+        <Button type="button" variant="ghost-muted" size="icon-xs">
           <InfoIcon className="size-3.5" />
-        </button>
+        </Button>
       </TooltipTrigger>
       <TooltipContent side="top" className="max-w-64">
         {text}
@@ -167,28 +169,17 @@ function ModeToggle({
 }) {
   return (
     <div className="flex overflow-hidden rounded-md border">
-      <button
-        onClick={() => onChange('encode')}
-        className={cn(
-          'px-2.5 py-1 text-xs font-medium transition-colors',
-          value === 'encode'
-            ? 'bg-primary text-primary-foreground'
-            : 'text-muted-foreground hover:text-foreground'
-        )}
-      >
-        Encode
-      </button>
-      <button
-        onClick={() => onChange('decode')}
-        className={cn(
-          'px-2.5 py-1 text-xs font-medium transition-colors',
-          value === 'decode'
-            ? 'bg-primary text-primary-foreground'
-            : 'text-muted-foreground hover:text-foreground'
-        )}
-      >
-        Decode
-      </button>
+      {(['encode', 'decode'] as const).map((mode) => (
+        <Button
+          key={mode}
+          type="button"
+          variant={value === mode ? 'default' : 'ghost-muted'}
+          onClick={() => onChange(mode)}
+          className="h-auto rounded-none px-2.5 py-1 text-xs font-medium capitalize shadow-none"
+        >
+          {mode}
+        </Button>
+      ))}
     </div>
   );
 }
@@ -219,13 +210,15 @@ function UUIDGenerator() {
         <CopyButton value={value} />
         <Tooltip>
           <TooltipTrigger asChild>
-            <button
+            <Button
               type="button"
+              variant="ghost"
+              size="icon-sm"
               onClick={() => setValue(generateUUID())}
-              className="text-primary hover:text-primary/80 shrink-0 rounded-md p-1.5 transition-colors"
+              className="text-primary hover:text-primary/80 shrink-0"
             >
               <RefreshCwIcon className="size-4" />
-            </button>
+            </Button>
           </TooltipTrigger>
           <TooltipContent side="top">Generate</TooltipContent>
         </Tooltip>
@@ -265,13 +258,15 @@ function NanoIDGenerator() {
           <CopyButton value={value} />
           <Tooltip>
             <TooltipTrigger asChild>
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="icon-sm"
                 onClick={() => setValue(generateNanoID(length))}
-                className="text-primary hover:text-primary/80 shrink-0 rounded-md p-1.5 transition-colors"
+                className="text-primary hover:text-primary/80 shrink-0"
               >
                 <RefreshCwIcon className="size-4" />
-              </button>
+              </Button>
             </TooltipTrigger>
             <TooltipContent side="top">Generate</TooltipContent>
           </Tooltip>
@@ -344,14 +339,15 @@ function Base64Tool() {
           <ModeToggle value={direction} onChange={setDirection} />
           <Tooltip>
             <TooltipTrigger asChild>
-              <button
+              <Button
                 type="button"
+                variant="ghost-muted"
+                size="icon-xs"
                 onClick={handleSwap}
                 disabled={!output || output === '⚠ Invalid input'}
-                className="text-muted-foreground hover:text-foreground p-1 transition-colors disabled:opacity-30"
               >
                 <ArrowRightLeftIcon className="size-3.5" />
-              </button>
+              </Button>
             </TooltipTrigger>
             <TooltipContent side="top">Swap input/output</TooltipContent>
           </Tooltip>
@@ -421,14 +417,15 @@ function URLTool() {
           <ModeToggle value={direction} onChange={setDirection} />
           <Tooltip>
             <TooltipTrigger asChild>
-              <button
+              <Button
                 type="button"
+                variant="ghost-muted"
+                size="icon-xs"
                 onClick={handleSwap}
                 disabled={!output || output === '⚠ Invalid input'}
-                className="text-muted-foreground hover:text-foreground p-1 transition-colors disabled:opacity-30"
               >
                 <ArrowRightLeftIcon className="size-3.5" />
-              </button>
+              </Button>
             </TooltipTrigger>
             <TooltipContent side="top">Swap input/output</TooltipContent>
           </Tooltip>

@@ -14,67 +14,67 @@ export const themes: ThemeDefinition[] = [
   {
     id: 'light',
     name: 'Light',
-    description: 'Fresh spring green, soft and airy',
+    description: 'Cool neutral paper, crisp and high-contrast',
     isDark: false,
     previewColors: {
-      bg: 'hsl(48 28% 96%)',
-      primary: 'hsl(158 42% 37%)',
-      accent: 'hsl(80 12% 93%)'
+      bg: 'hsl(220 20% 98%)',
+      primary: 'hsl(234 58% 52%)',
+      accent: 'hsl(220 16% 94%)'
+    }
+  },
+  {
+    id: 'sandstone',
+    name: 'Sandstone',
+    description: 'Warm ivory and espresso with deep teal',
+    isDark: false,
+    previewColors: {
+      bg: 'hsl(40 30% 97%)',
+      primary: 'hsl(178 44% 31%)',
+      accent: 'hsl(40 16% 92%)'
     }
   },
   {
     id: 'dark',
     name: 'Dark',
-    description: 'Deep forest dark, rich and quiet',
+    description: 'Neutral charcoal with a restrained indigo',
     isDark: true,
     previewColors: {
-      bg: 'hsl(155 22% 7%)',
-      primary: 'hsl(158 48% 50%)',
-      accent: 'hsl(155 14% 14%)'
+      bg: 'hsl(222 18% 9%)',
+      primary: 'hsl(234 70% 67%)',
+      accent: 'hsl(222 12% 16%)'
     }
   },
   {
-    id: 'discord',
-    name: 'Discord',
-    description: 'Blurple on dark gray, bold and playful',
+    id: 'midnight',
+    name: 'Midnight',
+    description: 'Deep navy blue-black with a clear azure',
     isDark: true,
     previewColors: {
-      bg: 'hsl(228 7% 14%)',
-      primary: 'hsl(235 86% 65%)',
-      accent: 'hsl(228 6% 20%)'
+      bg: 'hsl(220 40% 7%)',
+      primary: 'hsl(200 88% 57%)',
+      accent: 'hsl(218 30% 16%)'
     }
   },
   {
-    id: 'claude',
-    name: 'Claude',
-    description: 'Warm sand and terracotta, thoughtful',
-    isDark: false,
+    id: 'graphite',
+    name: 'Graphite',
+    description: 'Pure monochrome charcoal with cool steel',
+    isDark: true,
     previewColors: {
-      bg: 'hsl(40 33% 97%)',
-      primary: 'hsl(24 70% 50%)',
-      accent: 'hsl(36 14% 93%)'
+      bg: 'hsl(0 0% 9%)',
+      primary: 'hsl(214 14% 72%)',
+      accent: 'hsl(0 0% 17%)'
     }
   },
   {
-    id: 'spotify',
-    name: 'Spotify',
-    description: 'Vibrant green on jet black, bold',
+    id: 'umber',
+    name: 'Umber',
+    description: 'Warm brown-black with a glowing amber',
     isDark: true,
     previewColors: {
-      bg: 'hsl(0 0% 7%)',
-      primary: 'hsl(141 73% 42%)',
-      accent: 'hsl(0 0% 14%)'
-    }
-  },
-  {
-    id: 'monokai',
-    name: 'Monokai',
-    description: 'Warm muted dark with soft pink and green',
-    isDark: true,
-    previewColors: {
-      bg: 'hsl(330 5% 11%)',
-      primary: 'hsl(349 60% 64%)',
-      accent: 'hsl(330 4% 15%)'
+      bg: 'hsl(28 16% 8%)',
+      primary: 'hsl(36 80% 57%)',
+      accent: 'hsl(28 12% 17%)'
     }
   }
 ];

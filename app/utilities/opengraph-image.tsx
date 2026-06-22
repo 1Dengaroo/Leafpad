@@ -1,6 +1,6 @@
 import { generateOgImage, ogSize, ogContentType } from '@/lib/og-image';
 
-export const alt = 'Developer Utilities - UUID, NanoID, Base64 & Hash - Leafpad';
+export const alt = 'Developer Utilities - UUID, NanoID, Base64 & Hash - Toolbench';
 export const size = ogSize;
 export const contentType = ogContentType;
 

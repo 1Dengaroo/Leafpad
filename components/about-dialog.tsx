@@ -26,33 +26,16 @@ export function AboutDialog() {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>About Leafpad</DialogTitle>
+          <DialogTitle>About Toolbench</DialogTitle>
           <DialogDescription>Clean developer tools in one place.</DialogDescription>
         </DialogHeader>
         <div className="text-secondary-foreground space-y-3 text-sm">
           <p>
-            Developer tools with a clean interface that stay out of the way. No ads, no sign-ups, no
-            distractions.
-          </p>
-          <ul className="text-muted-foreground space-y-1 text-xs">
-            <li>
-              <span className="text-secondary-foreground font-medium">Markdown</span> - Editor with
-              live preview
-            </li>
-            <li>
-              <span className="text-secondary-foreground font-medium">JSON Formatter</span> -
-              Format, minify &amp; sort keys
-            </li>
-            <li>
-              <span className="text-secondary-foreground font-medium">Diff Tool</span> - Compare
-              JSON or text side-by-side
-            </li>
-            <li>
-              <span className="text-secondary-foreground font-medium">Utilities</span> - UUID,
-              NanoID, Base64 &amp; hashing
-            </li>
-          </ul>
-          <p className="text-muted-foreground pt-1 text-xs">
+            Toolbench is a suite of clean, ad-free developer tools in one place. It includes a
+            Markdown editor with live preview, a JSON formatter for beautifying, minifying, and
+            sorting keys, a diff tool for comparing JSON or text side by side, a notepad for quick
+            notes, and utilities like UUID and NanoID generators, Base64 encoding, and SHA-256
+            hashing. No ads, no sign-ups, no tracking, and everything runs locally in your browser.
             Built by{' '}
             <a
               href="https://andydeng.me"
@@ -62,6 +45,7 @@ export function AboutDialog() {
             >
               Andy Deng
             </a>
+            .
           </p>
         </div>
         <DialogFooter showCloseButton />

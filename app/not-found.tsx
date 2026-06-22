@@ -7,14 +7,14 @@ import { HomeIcon } from 'lucide-react';
 export const metadata: Metadata = {
   title: '404 - Page Not Found',
   description:
-    'The page you are looking for could not be found. Return to Leafpad developer tools.',
+    'The page you are looking for could not be found. Return to Toolbench developer tools.',
   robots: { index: false, follow: true }
 };
 
 export default function NotFound() {
   return (
     <div className="bg-background text-foreground flex min-h-screen flex-col items-center justify-center px-4">
-      <Image src="/logo.svg" alt="Leafpad" width={64} height={64} className="mb-6 select-none" />
+      <Image src="/logo.svg" alt="Toolbench" width={64} height={64} className="mb-6 select-none" />
       <h1 className="mb-1 text-6xl font-bold tracking-tighter sm:text-8xl">404</h1>
       <p className="text-muted-foreground mb-1 text-base sm:text-lg">
         This page got minified into nothing.
@@ -23,7 +23,7 @@ export default function NotFound() {
       <Button asChild>
         <Link href="/" className="gap-2">
           <HomeIcon className="size-4" />
-          Back to Leafpad
+          Back to Toolbench
         </Link>
       </Button>
     </div>

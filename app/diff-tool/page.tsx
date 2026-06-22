@@ -18,14 +18,14 @@ export const metadata: Metadata = {
     'inline diff'
   ],
   openGraph: {
-    title: 'Free Diff Tool - Compare JSON & Text | Leafpad',
+    title: 'Free Diff Tool - Compare JSON & Text | Toolbench',
     description:
       'Compare JSON or text side-by-side with word-level change detection and color-coded highlighting. Free and ad-free.',
-    url: 'https://leafpad.vercel.app/diff-tool'
+    url: 'https://toolbench.vercel.app/diff-tool'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Diff Tool - Compare JSON & Text | Leafpad',
+    title: 'Free Diff Tool - Compare JSON & Text | Toolbench',
     description:
       'Compare JSON or text side-by-side with word-level change detection. Free and ad-free.'
   },

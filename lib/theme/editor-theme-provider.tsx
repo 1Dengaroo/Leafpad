@@ -11,7 +11,7 @@ interface EditorThemeContext {
   setSyntaxHighlight: (on: boolean) => void;
 }
 
-const SYNTAX_KEY = 'leafpad-syntax-highlight';
+const SYNTAX_KEY = 'toolbench-syntax-highlight';
 
 const Context = createContext<EditorThemeContext>({
   editorTheme: editorThemes[0],

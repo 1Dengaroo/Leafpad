@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useSyncExternalStore } from 'react';
 import { Button } from '@/components/ui/button';
 import { JsonEditor, type LineStatus } from '@/components/json-editor';
+import { MobileTabSwitcher } from '@/components/mobile-tab-switcher';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,8 +25,8 @@ import {
 import { cn } from '@/lib/utils';
 import { computeDiff, type InlineSegment } from '@/lib/diff';
 
-const LEFT_KEY = 'leafpad-diff-left';
-const RIGHT_KEY = 'leafpad-diff-right';
+const LEFT_KEY = 'toolbench-diff-left';
+const RIGHT_KEY = 'toolbench-diff-right';
 
 export function JsonDiff() {
   const { syntaxHighlight } = useEditorTheme();
@@ -123,48 +124,25 @@ export function JsonDiff() {
     <>
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-2 border-b px-3 py-2 sm:px-4">
-        <Button
-          size="sm"
-          onClick={handleCompare}
-          disabled={!left.trim() && !right.trim()}
-          className="gap-1.5"
-        >
+        <Button size="sm" onClick={handleCompare} disabled={!left.trim() && !right.trim()}>
           <GitCompareArrowsIcon className="size-3.5" />
           Compare
         </Button>
-        <Button size="sm" variant="outline" onClick={handleClear} className="gap-1.5">
+        <Button size="sm" variant="outline" onClick={handleClear}>
           <Trash2Icon className="size-3.5" />
           <span className="hidden sm:inline">Clear</span>
         </Button>
       </div>
 
       {/* Mobile tab bar */}
-      <div className="flex border-b md:hidden">
-        <button
-          onClick={() => setMobileTab('left')}
-          className={cn(
-            'flex flex-1 items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors',
-            mobileTab === 'left'
-              ? 'border-primary text-foreground border-b-2'
-              : 'text-muted-foreground'
-          )}
-        >
-          <ArrowLeftIcon className="size-3.5" />
-          Left
-        </button>
-        <button
-          onClick={() => setMobileTab('right')}
-          className={cn(
-            'flex flex-1 items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors',
-            mobileTab === 'right'
-              ? 'border-primary text-foreground border-b-2'
-              : 'text-muted-foreground'
-          )}
-        >
-          <ArrowRightIcon className="size-3.5" />
-          Right
-        </button>
-      </div>
+      <MobileTabSwitcher
+        tabs={[
+          { value: 'left', label: 'Left', icon: <ArrowLeftIcon className="size-3.5" /> },
+          { value: 'right', label: 'Right', icon: <ArrowRightIcon className="size-3.5" /> }
+        ]}
+        value={mobileTab}
+        onChange={setMobileTab}
+      />
 
       {/* Editor panels */}
       <div ref={containerRef} className="flex min-h-0 flex-1 flex-col gap-0 md:flex-row">
@@ -179,7 +157,7 @@ export function JsonDiff() {
             <span className="text-muted-foreground hidden text-xs font-medium md:inline">Left</span>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="xs" className="text-muted-foreground gap-1">
+                <Button variant="ghost-muted" size="xs">
                   <FlaskConicalIcon className="size-3" />
                   Presets
                 </Button>

@@ -4,8 +4,7 @@ import { useRef, useState, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 import { useEditorTheme } from '@/lib/theme/editor-theme-provider';
-import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
-import { ClipboardCopyIcon, CheckIcon } from 'lucide-react';
+import { EditorCopyButton } from '@/components/editor-copy-button';
 import type { EditorTheme } from '@/lib/theme/editor-themes';
 import type { InlineSegment } from '@/lib/diff';
 
@@ -159,16 +158,8 @@ export function JsonEditor({
   const overlayRef = useRef<HTMLDivElement>(null);
   const highlightRef = useRef<HTMLDivElement>(null);
   const [editing, setEditing] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   const lineCount = value ? value.split('\n').length : 1;
-
-  const handleCopy = useCallback(() => {
-    if (!value) return;
-    navigator.clipboard.writeText(value);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
-  }, [value]);
 
   const enterEditor = useCallback(() => {
     setEditing(true);
@@ -309,34 +300,7 @@ export function JsonEditor({
         )}
 
         {/* Copy button */}
-        {value && (
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleCopy();
-                }}
-                className="absolute top-2 right-2 z-10 rounded-md p-1.5 opacity-100 transition-opacity md:opacity-0 md:group-hover/editor:opacity-100"
-                style={{
-                  background: c.gutterBg,
-                  color: c.gutterText,
-                  border: `1px solid ${c.border}`
-                }}
-                tabIndex={-1}
-                aria-label="Copy to clipboard"
-              >
-                {copied ? (
-                  <CheckIcon className="size-3.5" />
-                ) : (
-                  <ClipboardCopyIcon className="size-3.5" />
-                )}
-              </button>
-            </TooltipTrigger>
-            <TooltipContent side="bottom">{copied ? 'Copied!' : 'Copy'}</TooltipContent>
-          </Tooltip>
-        )}
+        {value && <EditorCopyButton value={value} colors={c} />}
 
         {/* Syntax highlight layer */}
         {syntaxHighlight && (

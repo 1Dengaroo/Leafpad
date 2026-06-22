@@ -13,7 +13,7 @@ export const diffPresets: DiffPreset[] = [
     category: 'json',
     left: JSON.stringify(
       {
-        name: 'Leafpad',
+        name: 'Toolbench',
         version: '1.2.0',
         description: 'Clean devtools',
         settings: { theme: 'dark', indentSize: 2, wordWrap: true },
@@ -24,7 +24,7 @@ export const diffPresets: DiffPreset[] = [
     ),
     right: JSON.stringify(
       {
-        name: 'Leafpad',
+        name: 'Toolbench',
         version: '1.2.1',
         description: 'Clean devtools',
         settings: { theme: 'dark', indentSize: 4, wordWrap: true },

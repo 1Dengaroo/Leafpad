@@ -1,6 +1,6 @@
 import { generateOgImage, ogSize, ogContentType } from '@/lib/og-image';
 
-export const alt = 'Notepad - Quick Notes for Developers - Leafpad';
+export const alt = 'Notepad - Quick Notes for Developers - Toolbench';
 export const size = ogSize;
 export const contentType = ogContentType;
 

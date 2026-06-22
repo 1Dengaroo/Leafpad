@@ -13,7 +13,7 @@ interface MarkdownPreviewProps {
 export const MarkdownPreview = forwardRef<HTMLDivElement, MarkdownPreviewProps>(
   function MarkdownPreview({ content }, ref) {
     return (
-      <div ref={ref} className="prose-leafpad h-full overflow-y-auto p-6">
+      <div ref={ref} className="prose-toolbench h-full overflow-y-auto p-6">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{

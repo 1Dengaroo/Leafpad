@@ -28,7 +28,7 @@ export function generateOgImage(title: string, description: string) {
           textTransform: 'uppercase' as const
         }}
       >
-        Leafpad
+        Toolbench
       </div>
       <div
         style={{

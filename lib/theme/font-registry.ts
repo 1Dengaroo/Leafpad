@@ -7,6 +7,12 @@ export interface FontDefinition {
 
 export const fonts: FontDefinition[] = [
   {
+    id: 'switzer',
+    name: 'Switzer',
+    variable: '--font-switzer',
+    category: 'sans-serif'
+  },
+  {
     id: 'sora',
     name: 'Sora',
     variable: '--font-sora',

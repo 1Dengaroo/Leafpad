@@ -18,14 +18,14 @@ export const metadata: Metadata = {
     'local storage notes'
   ],
   openGraph: {
-    title: 'Free Notepad for Developers | Leafpad',
+    title: 'Free Notepad for Developers | Toolbench',
     description:
       'Quick sticky notes saved locally in your browser. Jot down notes, snippets, and reminders. Free and ad-free.',
-    url: 'https://leafpad.vercel.app/notepad'
+    url: 'https://toolbench.vercel.app/notepad'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Notepad for Developers | Leafpad',
+    title: 'Free Notepad for Developers | Toolbench',
     description: 'Quick sticky notes saved locally in your browser. Free and ad-free.'
   },
   alternates: {

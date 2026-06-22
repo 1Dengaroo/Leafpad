@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect, useSyncExternalStore } from 'react';
 import { Button } from '@/components/ui/button';
 import { JsonEditor } from '@/components/json-editor';
+import { MobileTabSwitcher } from '@/components/mobile-tab-switcher';
 import { IndentDropdown } from '@/components/indent-dropdown';
 import {
   DropdownMenu,
@@ -31,7 +32,7 @@ import {
 import { cn } from '@/lib/utils';
 import { sortKeysDeep } from '@/lib/json-sort';
 
-const STORAGE_KEY = 'leafpad-json-input';
+const STORAGE_KEY = 'toolbench-json-input';
 
 function downloadFile(filename: string, content: string, type: string) {
   const blob = new Blob([content], { type });
@@ -144,19 +145,19 @@ export function JsonFormatter() {
     <>
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-2 border-b px-3 py-2 sm:px-4">
-        <Button size="sm" onClick={handleFormat} className="gap-1.5">
+        <Button size="sm" onClick={handleFormat}>
           <SparklesIcon className="size-3.5" />
           Format
         </Button>
-        <Button size="sm" variant="outline" onClick={handleMinify} className="gap-1.5">
+        <Button size="sm" variant="outline" onClick={handleMinify}>
           <MinimizeIcon className="size-3.5" />
           <span className="hidden sm:inline">Minify</span>
         </Button>
-        <Button size="sm" variant="outline" onClick={handleSortKeys} className="gap-1.5">
+        <Button size="sm" variant="outline" onClick={handleSortKeys}>
           <ArrowDownAZIcon className="size-3.5" />
           <span className="hidden sm:inline">Sort Keys</span>
         </Button>
-        <Button size="sm" variant="outline" onClick={handleClear} className="gap-1.5">
+        <Button size="sm" variant="outline" onClick={handleClear}>
           <Trash2Icon className="size-3.5" />
           <span className="hidden sm:inline">Clear</span>
         </Button>
@@ -164,7 +165,7 @@ export function JsonFormatter() {
         {output && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button size="sm" variant="outline" className="gap-1.5">
+              <Button size="sm" variant="outline">
                 <DownloadIcon className="size-3.5" />
                 <span className="hidden sm:inline">Export</span>
               </Button>
@@ -194,32 +195,14 @@ export function JsonFormatter() {
       </div>
 
       {/* Mobile tab bar */}
-      <div className="flex border-b md:hidden">
-        <button
-          onClick={() => setMobileTab('input')}
-          className={cn(
-            'flex flex-1 items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors',
-            mobileTab === 'input'
-              ? 'border-primary text-foreground border-b-2'
-              : 'text-muted-foreground'
-          )}
-        >
-          <PencilLineIcon className="size-3.5" />
-          Input
-        </button>
-        <button
-          onClick={() => setMobileTab('output')}
-          className={cn(
-            'flex flex-1 items-center justify-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors',
-            mobileTab === 'output'
-              ? 'border-primary text-foreground border-b-2'
-              : 'text-muted-foreground'
-          )}
-        >
-          <FileOutputIcon className="size-3.5" />
-          Output
-        </button>
-      </div>
+      <MobileTabSwitcher
+        tabs={[
+          { value: 'input', label: 'Input', icon: <PencilLineIcon className="size-3.5" /> },
+          { value: 'output', label: 'Output', icon: <FileOutputIcon className="size-3.5" /> }
+        ]}
+        value={mobileTab}
+        onChange={setMobileTab}
+      />
 
       {/* Editor panels */}
       <div ref={containerRef} className="flex min-h-0 flex-1 flex-col gap-0 md:flex-row">
@@ -236,7 +219,7 @@ export function JsonFormatter() {
             </span>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="xs" className="text-muted-foreground gap-1">
+                <Button variant="ghost-muted" size="xs">
                   <FlaskConicalIcon className="size-3" />
                   Examples
                 </Button>
@@ -275,9 +258,8 @@ export function JsonFormatter() {
             </span>
             {output && (
               <Button
-                variant="ghost"
+                variant="ghost-muted"
                 size="xs"
-                className="text-muted-foreground gap-1"
                 onClick={() => {
                   handleInputChange(output);
                   setMobileTab('input');
