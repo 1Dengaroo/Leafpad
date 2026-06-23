@@ -43,8 +43,8 @@ export const editorThemes: EditorTheme[] = [
     }
   },
   {
-    id: 'paper',
-    name: 'Paper',
+    id: 'light',
+    name: 'Light',
     colors: {
       bg: '#ffffff',
       text: '#1a1a1a',
@@ -64,29 +64,8 @@ export const editorThemes: EditorTheme[] = [
     }
   },
   {
-    id: 'slate',
-    name: 'Slate',
-    colors: {
-      bg: '#2d3748',
-      text: '#e2e8f0',
-      gutterBg: '#252f3f',
-      gutterText: '#718096',
-      border: '#4a5568',
-      placeholder: '#718096',
-      readOnlyBg: '#2a3444',
-      syntax: {
-        key: '#ff7b85',
-        string: '#b5e890',
-        number: '#ffcb6b',
-        boolean: '#89ddff',
-        null: '#d8a0f0',
-        punctuation: '#a0b4c8'
-      }
-    }
-  },
-  {
-    id: 'ink',
-    name: 'Ink',
+    id: 'dark',
+    name: 'Dark',
     colors: {
       bg: '#0d0d0d',
       text: '#e8e8e8',
@@ -102,27 +81,6 @@ export const editorThemes: EditorTheme[] = [
         boolean: '#99d5ff',
         null: '#e8a0ff',
         punctuation: '#888888'
-      }
-    }
-  },
-  {
-    id: 'sepia',
-    name: 'Sepia',
-    colors: {
-      bg: '#f5f0e8',
-      text: '#433422',
-      gutterBg: '#ede7dd',
-      gutterText: '#a09080',
-      border: '#d9d0c3',
-      placeholder: '#a09080',
-      readOnlyBg: '#f0ebe2',
-      syntax: {
-        key: '#8b3a1a',
-        string: '#3d6b1e',
-        number: '#a85c00',
-        boolean: '#1a5c8a',
-        null: '#6a2e6a',
-        punctuation: '#4a3d30'
       }
     }
   }
