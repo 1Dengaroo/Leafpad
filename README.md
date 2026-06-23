@@ -1,6 +1,6 @@
 # Toolbench
 
-A clean, ad-free set of developer tools: markdown editor, JSON formatter, and JSON diff.
+A clean, ad-free set of developer tools: markdown editor, JSON formatter, diff tool, utilities, color picker, password generator, lorem ipsum, and a notepad.
 
 **Live at [toolbench.vercel.app](https://toolbench.vercel.app)**
 
@@ -22,15 +22,42 @@ A clean, ad-free set of developer tools: markdown editor, JSON formatter, and JS
 - Configurable indentation (2-8 spaces)
 - Export formatted output
 
-### JSON Diff
+### Diff Tool
 
-- Line-by-line comparison using LCS algorithm
-- Visual highlighting for added and removed lines
+- Compare JSON or text, line-by-line using an LCS algorithm
+- Word-level inline highlighting for added and removed content
 - Side-by-side view
+
+### Utilities
+
+- UUID v4 and Nano ID generators with entropy/crack-time estimates
+- SHA-1/256/384/512 hashing
+- Base64 and URL encode/decode
+
+### Color Picker
+
+- RGB and HSL sliders with live gradient tracks
+- Convert between HEX, RGB, and HSL
+- Tints & shades ramp, WCAG contrast checker, and live UI preview
+
+### Password Generator
+
+- Cryptographically secure (Web Crypto) with unbiased sampling
+- Configurable length and character sets
+- Live entropy and crack-time estimates
+
+### Lorem Ipsum
+
+- Generate placeholder paragraphs, sentences, or words
+- Configurable count with instant copy
+
+### Notepad
+
+- Quick notes and snippets, auto-saved to localStorage
 
 ## Other Features
 
-- 6 app themes (3 light, 3 dark)
+- Light and dark themes
 - 5 editor themes
 - 5 font options
 - Auto-save to localStorage
@@ -61,7 +88,7 @@ Open [localhost:3000](http://localhost:3000).
 npm test
 ```
 
-Tests cover utility functions (stats computation, JSON key sorting, LCS diff algorithm) and data integrity checks for examples, presets, and theme definitions.
+Tests cover utility functions (stats computation, JSON key sorting, LCS diff algorithm, color conversions and contrast) and data integrity checks for examples, presets, and theme definitions.
 
 ## Note
 

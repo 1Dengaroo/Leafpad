@@ -6,6 +6,9 @@ const tools = [
   { href: '/json-formatter', title: 'JSON Formatter' },
   { href: '/diff-tool', title: 'Diff Tool' },
   { href: '/utilities', title: 'Utilities' },
+  { href: '/color-picker', title: 'Color Picker' },
+  { href: '/password-generator', title: 'Password Generator' },
+  { href: '/lorem-ipsum', title: 'Lorem Ipsum' },
   { href: '/notepad', title: 'Notepad' }
 ];
 

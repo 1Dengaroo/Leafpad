@@ -7,13 +7,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { CopyButton, InfoTooltip } from '@/components/utility-primitives';
+import { estimateCrackTime } from '@/lib/crack-time';
 import { useEditorTheme } from '@/lib/theme/editor-theme-provider';
 import {
   RefreshCwIcon,
-  ClipboardCopyIcon,
-  CheckIcon,
   ArrowRightLeftIcon,
-  InfoIcon,
   FingerprintIcon,
   SparklesIcon,
   FileDigitIcon,
@@ -39,25 +38,6 @@ function generateNanoID(size = 21): string {
   return id;
 }
 
-function estimateCrackTime(length: number): string {
-  const guessesPerSecond = 1e10;
-  const totalCombinations = Math.pow(64, length);
-  const seconds = totalCombinations / (2 * guessesPerSecond);
-
-  if (!isFinite(seconds) || seconds > 1e30) return '∞ (heat death of universe)';
-  if (seconds < 0.001) return '< 1 millisecond';
-  if (seconds < 1) return `~${Math.round(seconds * 1000)} milliseconds`;
-  if (seconds < 60) return `~${Math.round(seconds)} seconds`;
-  if (seconds < 3600) return `~${Math.round(seconds / 60)} minutes`;
-  if (seconds < 86400) return `~${Math.round(seconds / 3600)} hours`;
-  if (seconds < 86400 * 365) return `~${Math.round(seconds / 86400)} days`;
-  if (seconds < 86400 * 365 * 1e3) return `~${Math.round(seconds / (86400 * 365))} years`;
-  if (seconds < 86400 * 365 * 1e6) return `~${Math.round(seconds / (86400 * 365 * 1e3))}K years`;
-  if (seconds < 86400 * 365 * 1e9) return `~${Math.round(seconds / (86400 * 365 * 1e6))}M years`;
-  if (seconds < 86400 * 365 * 1e12) return `~${Math.round(seconds / (86400 * 365 * 1e9))}B years`;
-  return `~${(seconds / (86400 * 365 * 1e12)).toExponential(1)} trillion years`;
-}
-
 // ── Hash Generator ─────────────────────────────────────────────
 
 async function computeHash(algorithm: string, input: string): Promise<string> {
@@ -68,74 +48,6 @@ async function computeHash(algorithm: string, input: string): Promise<string> {
 }
 
 // ── Shared Components ──────────────────────────────────────────
-
-function CopyButton({ value, compact }: { value: string; compact?: boolean }) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = useCallback(() => {
-    if (!value) return;
-    navigator.clipboard.writeText(value);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
-  }, [value]);
-
-  if (compact) {
-    return (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            type="button"
-            variant="ghost-muted"
-            size="icon-xs"
-            onClick={handleCopy}
-            disabled={!value}
-            className="shrink-0"
-          >
-            {copied ? (
-              <CheckIcon className="size-3.5" />
-            ) : (
-              <ClipboardCopyIcon className="size-3.5" />
-            )}
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent side="top">{copied ? 'Copied!' : 'Copy'}</TooltipContent>
-      </Tooltip>
-    );
-  }
-
-  return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Button
-          type="button"
-          variant="ghost-muted"
-          size="icon-sm"
-          onClick={handleCopy}
-          disabled={!value}
-          className="shrink-0"
-        >
-          {copied ? <CheckIcon className="size-4" /> : <ClipboardCopyIcon className="size-4" />}
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent side="top">{copied ? 'Copied!' : 'Copy'}</TooltipContent>
-    </Tooltip>
-  );
-}
-
-function InfoTooltip({ text }: { text: string }) {
-  return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Button type="button" variant="ghost-muted" size="icon-xs">
-          <InfoIcon className="size-3.5" />
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent side="top" className="max-w-64">
-        {text}
-      </TooltipContent>
-    </Tooltip>
-  );
-}
 
 function UtilityCard({
   icon,

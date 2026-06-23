@@ -36,6 +36,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9
     },
     {
+      url: `${base}/color-picker`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
+    {
+      url: `${base}/password-generator`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
+    {
+      url: `${base}/lorem-ipsum`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
+    {
       url: `${base}/notepad`,
       lastModified,
       changeFrequency: 'monthly',

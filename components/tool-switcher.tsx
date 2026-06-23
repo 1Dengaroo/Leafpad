@@ -19,10 +19,21 @@ import {
   BracesIcon,
   GitCompareArrowsIcon,
   WrenchIcon,
-  StickyNoteIcon
+  StickyNoteIcon,
+  PaletteIcon,
+  KeyRoundIcon,
+  PilcrowIcon
 } from 'lucide-react';
 
-export type Tool = 'markdown' | 'json-formatter' | 'diff-tool' | 'utilities' | 'notepad';
+export type Tool =
+  | 'markdown'
+  | 'json-formatter'
+  | 'diff-tool'
+  | 'utilities'
+  | 'color-picker'
+  | 'password-generator'
+  | 'lorem-ipsum'
+  | 'notepad';
 
 const tools: {
   id: Tool;
@@ -56,8 +67,29 @@ const tools: {
     id: 'utilities',
     href: '/utilities',
     label: 'Utilities',
-    description: 'UUID, NanoID & Base64',
+    description: 'IDs, hashes & encoders',
     icon: <WrenchIcon className="size-4" />
+  },
+  {
+    id: 'color-picker',
+    href: '/color-picker',
+    label: 'Color Picker',
+    description: 'HEX, RGB & HSL + contrast',
+    icon: <PaletteIcon className="size-4" />
+  },
+  {
+    id: 'password-generator',
+    href: '/password-generator',
+    label: 'Password Generator',
+    description: 'Secure random passwords',
+    icon: <KeyRoundIcon className="size-4" />
+  },
+  {
+    id: 'lorem-ipsum',
+    href: '/lorem-ipsum',
+    label: 'Lorem Ipsum',
+    description: 'Placeholder text',
+    icon: <PilcrowIcon className="size-4" />
   },
   {
     id: 'notepad',
