@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Sora, Space_Grotesk, Literata, Plus_Jakarta_Sans, Newsreader } from 'next/font/google';
-import localFont from 'next/font/local';
+import { Inter, Literata, Lexend } from 'next/font/google';
 import '@/styles/globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from 'sonner';
@@ -10,31 +9,13 @@ import { EditorThemeProvider } from '@/lib/theme/editor-theme-provider';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { JsonLd, websiteSchema } from '@/lib/structured-data';
 
-const sora = Sora({ subsets: ['latin'], variable: '--font-sora' });
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' });
+// Inter — neutral, professional UI sans. Default font.
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const literata = Literata({ subsets: ['latin'], variable: '--font-literata' });
-const plusJakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-plus-jakarta' });
-const newsreader = Newsreader({ subsets: ['latin'], variable: '--font-newsreader' });
-// Switzer — clean geometric sans (Fontshare, free). Default UI font.
-const switzer = localFont({
-  src: [
-    { path: './fonts/Switzer-Medium.woff2', weight: '500', style: 'normal' },
-    { path: './fonts/Switzer-Semibold.woff2', weight: '600', style: 'normal' },
-    { path: './fonts/Switzer-Bold.woff2', weight: '700', style: 'normal' },
-    { path: './fonts/Switzer-Extrabold.woff2', weight: '800', style: 'normal' }
-  ],
-  variable: '--font-switzer',
-  display: 'swap'
-});
+// Lexend — designed to improve reading proficiency; used as the dyslexia-friendly option.
+const lexend = Lexend({ subsets: ['latin'], variable: '--font-lexend' });
 
-const fontVariables = [
-  switzer.variable,
-  sora.variable,
-  spaceGrotesk.variable,
-  literata.variable,
-  plusJakarta.variable,
-  newsreader.variable
-].join(' ');
+const fontVariables = [inter.variable, literata.variable, lexend.variable].join(' ');
 
 export const metadata: Metadata = {
   title: {
@@ -97,10 +78,7 @@ export default function RootLayout({
       <head>
         <JsonLd data={websiteSchema} />
       </head>
-      <body
-        className={`${fontVariables} antialiased`}
-        style={{ fontFamily: 'var(--font-switzer)' }}
-      >
+      <body className={`${fontVariables} antialiased`} style={{ fontFamily: 'var(--font-inter)' }}>
         <ThemeProvider>
           <FontProvider>
             <EditorThemeProvider>

@@ -7,40 +7,28 @@ export interface FontDefinition {
 
 export const fonts: FontDefinition[] = [
   {
-    id: 'switzer',
-    name: 'Switzer',
-    variable: '--font-switzer',
+    id: 'default',
+    name: 'Default',
+    variable: '--font-inter',
     category: 'sans-serif'
   },
   {
-    id: 'sora',
-    name: 'Sora',
-    variable: '--font-sora',
-    category: 'sans-serif'
-  },
-  {
-    id: 'space-grotesk',
-    name: 'Space Grotesk',
-    variable: '--font-space-grotesk',
-    category: 'sans-serif'
-  },
-  {
-    id: 'literata',
-    name: 'Literata',
+    id: 'serif',
+    name: 'Serif',
     variable: '--font-literata',
     category: 'serif'
   },
   {
-    id: 'plus-jakarta',
-    name: 'Plus Jakarta Sans',
-    variable: '--font-plus-jakarta',
+    id: 'system',
+    name: 'System',
+    variable: '--font-system',
     category: 'sans-serif'
   },
   {
-    id: 'newsreader',
-    name: 'Newsreader',
-    variable: '--font-newsreader',
-    category: 'serif'
+    id: 'dyslexic',
+    name: 'Dyslexic Friendly',
+    variable: '--font-lexend',
+    category: 'sans-serif'
   }
 ];
 
