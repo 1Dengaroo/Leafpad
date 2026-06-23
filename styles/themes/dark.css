@@ -1,6 +1,6 @@
 /* ============================================================
    Theme: Dark
-   Mood:  Neutral charcoal with a restrained indigo accent — quiet, focused
+   Mood:  Pure monochrome charcoal with a cool steel accent — minimal, serious
    ============================================================ */
 
 [data-theme='dark'] {
@@ -8,66 +8,66 @@
 
   /* ── Semantic tokens (oklch L C H) ── */
 
-  --accent-primary: 0.66 0.16 272;
-  --accent-secondary: 0.62 0.1 250;
+  --accent-primary: 0.74 0.02 250;
+  --accent-secondary: 0.62 0.015 250;
 
-  --surface-primary: 0.16 0.01 265;
-  --surface-secondary: 0.2 0.012 265;
-  --surface-elevated: 0.23 0.014 265;
-  --surface-overlay: 0.1 0.008 265;
+  --surface-primary: 0.16 0 0;
+  --surface-secondary: 0.2 0 0;
+  --surface-elevated: 0.23 0 0;
+  --surface-overlay: 0.09 0 0;
 
-  --border-default: 0.3 0.014 265;
-  --border-subtle: 0.24 0.01 265;
-  --border-strong: 0.4 0.018 265;
+  --border-default: 0.3 0 0;
+  --border-subtle: 0.24 0 0;
+  --border-strong: 0.4 0 0;
 
-  --text-primary: 0.9 0.008 265;
-  --text-secondary: 0.72 0.008 265;
-  --text-muted: 0.56 0.008 265;
-  --text-inverse: 0.16 0.01 265;
+  --text-primary: 0.9 0 0;
+  --text-secondary: 0.7 0 0;
+  --text-muted: 0.55 0 0;
+  --text-inverse: 0.16 0 0;
 
   /* ── Elevation ── */
 
-  --elevation-sm: 0 1px 3px oklch(0 0 0 / 0.25), 0 1px 2px oklch(0 0 0 / 0.15);
-  --elevation-md: 0 6px 16px oklch(0 0 0 / 0.3), 0 2px 6px oklch(0 0 0 / 0.15);
-  --elevation-lg: 0 12px 32px oklch(0 0 0 / 0.35), 0 4px 10px oklch(0 0 0 / 0.2);
+  --elevation-sm: 0 1px 2px oklch(0 0 0 / 0.2);
+  --elevation-md: 0 2px 4px oklch(0 0 0 / 0.22);
+  --elevation-lg: 0 6px 16px oklch(0 0 0 / 0.28);
 
   /* ── Shape ── */
 
-  --radius: 0.625rem;
+  --radius: 0.5rem;
   --card-border-width: 1px;
 
   /* ── shadcn bridge tokens (HSL) ── */
 
-  --background: 222 18% 9%;
-  --foreground: 220 14% 90%;
-  --card: 222 16% 12%;
-  --card-foreground: 220 14% 90%;
-  --popover: 222 18% 8%;
-  --popover-foreground: 220 14% 90%;
-  --primary: 234 70% 67%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 222 12% 18%;
-  --secondary-foreground: 220 14% 86%;
-  --muted: 222 12% 15%;
-  --muted-foreground: 220 9% 56%;
-  --accent: 222 12% 16%;
-  --accent-foreground: 220 14% 90%;
-  --destructive: 0 70% 55%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 222 12% 20%;
-  --input: 222 12% 20%;
-  --ring: 234 70% 67%;
-  --chart-1: 234 66% 68%;
-  --chart-2: 210 64% 60%;
-  --chart-3: 262 54% 68%;
-  --chart-4: 190 56% 54%;
-  --chart-5: 248 50% 70%;
-  --sidebar-background: 222 18% 7%;
-  --sidebar-foreground: 220 9% 54%;
-  --sidebar-primary: 234 70% 64%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 222 12% 13%;
-  --sidebar-accent-foreground: 220 14% 90%;
-  --sidebar-border: 222 12% 16%;
-  --sidebar-ring: 234 70% 64%;
+  --background: 0 0% 9%;
+  --foreground: 0 0% 88%;
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 88%;
+  --popover: 0 0% 8%;
+  --popover-foreground: 0 0% 88%;
+  --primary: 214 14% 72%;
+  --primary-foreground: 0 0% 10%;
+  --secondary: 0 0% 17%;
+  --secondary-foreground: 0 0% 85%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 56%;
+  --accent: 0 0% 17%;
+  --accent-foreground: 0 0% 90%;
+  --destructive: 0 62% 52%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 27%;
+  --input: 0 0% 27%;
+  --ring: 214 14% 72%;
+  --chart-1: 214 12% 74%;
+  --chart-2: 0 0% 62%;
+  --chart-3: 214 10% 50%;
+  --chart-4: 0 0% 40%;
+  --chart-5: 214 8% 84%;
+  --sidebar-background: 0 0% 7%;
+  --sidebar-foreground: 0 0% 54%;
+  --sidebar-primary: 214 14% 70%;
+  --sidebar-primary-foreground: 0 0% 10%;
+  --sidebar-accent: 0 0% 13%;
+  --sidebar-accent-foreground: 0 0% 90%;
+  --sidebar-border: 0 0% 22%;
+  --sidebar-ring: 214 14% 70%;
 }

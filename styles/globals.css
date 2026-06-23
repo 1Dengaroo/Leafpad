@@ -2,13 +2,14 @@
 @import 'tw-animate-css';
 
 @import './themes/light.css';
-@import './themes/sandstone.css';
 @import './themes/dark.css';
-@import './themes/midnight.css';
-@import './themes/graphite.css';
-@import './themes/umber.css';
 
-@custom-variant dark (&:is([data-theme="dark"] *, [data-theme="midnight"] *, [data-theme="graphite"] *, [data-theme="umber"] *));
+@custom-variant dark (&:is([data-theme="dark"] *));
+
+:root {
+  --font-system: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+}
 
 @theme inline {
   --color-background: hsl(var(--background));
